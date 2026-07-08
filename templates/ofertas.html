@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Ofertas — Bodega July{% endblock %}
+
+{% block content %}
+
+    <!-- OFERTAS -->
+    <section id="ofertas" style="padding-top: 100px;">
+        <div class="ofertas-header">
+            <div>
+                <span class="ofertas-tag"><i class="fas fa-bolt"></i> Ofertas de hoy</span>
+                <h2>Precios que no puedes perderte</h2>
+            </div>
+        </div>
+
+        <div class="ofertas-container" id="ofertas-container">
+            <!-- Las ofertas se cargan dinámicamente desde la API, según el día de la semana -->
+        </div>
+
+        <p id="ofertas-vacio" style="display:none;text-align:center;color:#7b7391;padding:40px 0">
+            No hay ofertas activas para hoy. ¡Vuelve pronto!
+        </p>
+    </section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{{ url_for('static', filename='js/ofertas.js') }}?v=9.0"></script>
+{% endblock %}
