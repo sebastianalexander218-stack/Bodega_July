@@ -1,8 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for, session, jsonify
 import os
 import json
-import datetime
-from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.secret_key = "mi_clave_secreta_123"
@@ -74,6 +72,7 @@ PRODUCTOS_POR_DEFECTO = [
     {"id": 14, "nombre": "Azúcar Rubia Cartavio 1 kg",         "precio":  4.50, "categoria": "alimentos", "imagen": "AzucarCartavio.jpg", "stock": 50},
     {"id": 15, "nombre": "Aceite Primor Clásico 1 L",          "precio": 10.50, "categoria": "alimentos", "imagen": "AceitePrimor.jpg", "stock": 35},
     {"id": 16, "nombre": "Fideos Don Vittorio Spaghetti 950 g", "precio":  5.50, "categoria": "alimentos", "imagen": "FideosVittorio.jpg", "stock": 45},
+
     {"id": 17, "nombre": "Fideos Don Vittorio Tallarín 950 g", "precio":  5.50, "categoria": "alimentos", "imagen": "FideoCodo.jpg", "stock": 42},
     {"id": 18, "nombre": "Lentejas Costeño 500 g",             "precio":  4.50, "categoria": "alimentos", "imagen": "Lentejas.jpg",    "stock": 30},
     {"id": 19, "nombre": "Frijol Canario Costeño 500 g",       "precio":  5.50, "categoria": "alimentos", "imagen": "FrijolCanario.jpg",    "stock": 28},
@@ -172,12 +171,12 @@ def _ctx():
 
 @app.route("/")
 def raiz():
-    """Renderiza directamente la página de inicio."""
-    return render_template("inicio.html")  # <--- CORREGIDO: renderiza directamente
+    """Renderiza directamente bienvenida.html (sabemos que existe)."""
+    return render_template("bienvenida.html")  # ⚠️ CAMBIO: ahora va a bienvenida
 
 @app.route("/inicio")
 def inicio():
-    return render_template("inicio.html")
+    return render_template("inicio.html", active_section="inicio", **_ctx())
 
 @app.route("/productos")
 def productos():
@@ -189,6 +188,8 @@ def ofertas():
 
 
 # ── API Ofertas ───────────────────────────────────────
+
+import datetime
 
 def _dia_actual():
     """Nombre del día de hoy en minúscula, sin tildes, en el formato usado por DIAS_SEMANA."""
@@ -364,6 +365,9 @@ def admin():
 
 
 # ── API Productos ─────────────────────────────────────
+
+import os
+from werkzeug.utils import secure_filename
 
 EXTENSIONES_PERMITIDAS = {"png", "jpg", "jpeg", "gif", "webp"}
 
