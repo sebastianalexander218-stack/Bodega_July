@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "usuario": "odin",
+    "nombre": "Odin",
+    "password": "1234",
+    "rol": "admin",
+    "email": "odin@bodegajuly.com"
+  }
+]
