@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bodega July{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="overlay-pago"></div>
+    <div id="modal-pago" role="dialog" aria-modal="true" aria-label="Pago">
+      <div class="modal-pago-inner">
+        <div class="modal-pago-header">
+          <h2>Finalizar pedido</h2>
+          <button id="btn-cerrar-pago" aria-label="Cerrar">&#x2715;</button>
+        </div>
+        <div class="modal-pago-body">
+          <div class="pago-resumen">
+            <h3>Tu pedido</h3>
+            <div id="pago-resumen-items"></div>
+            <div class="pago-total-row">
+              <span>Total a pagar</span>
+              <strong id="pago-total">S/ 0.00</strong>
+            </div>
+          </div>
+          <div class="pago-metodos">
+            <h3>Seleccione su método de pago</h3>
+            <div class="metodos-grid">
+              <button class="metodo-btn" data-metodo="yape">
+                <img src="{{ url_for('static', filename='img/YAPE.png') }}" alt="Yape">
+                <span>Yape</span>
+              </button>
+              <button class="metodo-btn" data-metodo="plin">
+                <img src="{{ url_for('static', filename='img/PLIN.png') }}" alt="Plin">
+                <span>Plin</span>
+              </button>
+              <button class="metodo-btn" data-metodo="tarjeta">
+                <i class="fas fa-credit-card"></i>
+                <span>Tarjeta</span>
+              </button>
+              <button class="metodo-btn" data-metodo="efectivo">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Efectivo</span>
+              </button>
+            </div>
+            <div id="panel-detalle-pago"></div>
+          </div>
+        </div>
+        <div class="pago-direccion-wrap" style="padding:0 24px 16px">
+          <label style="font-size:12px;font-weight:600;color:#7b7391;display:block;margin-bottom:6px">📍 Dirección de entrega</label>
+          <input type="text" id="input-direccion" placeholder="Ej: Av. 22 de las Flores 123, SJL"
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1.5px solid #ddd5f7;font-size:13px;font-family:inherit;outline:none">
+          <p id="error-direccion" style="color:#ef4444;font-size:12px;margin-top:6px;font-weight:600"></p>
+          <div id="error-stock" style="display:none;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;font-size:12px;font-weight:600;border-radius:8px;padding:10px 14px;margin-top:10px"></div>
+        </div>
+        <div class="modal-pago-footer">
+          <button id="btn-confirmar-pago" class="btn-confirmar" disabled>Confirmar pedido &#127881;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast-confirmacion" class="toast">
+      <span class="toast-texto"></span>
+    </div>
+
+    <!-- SIDEBAR CARRITO -->
+    <div id="overlay-carrito"></div>
+    <aside id="carrito-sidebar" aria-label="Carrito de compras">
+        <div class="carrito-header">
+            <h2>Tu carrito</h2>
+            <button id="btn-cerrar-carrito" aria-label="Cerrar carrito">✕</button>
+        </div>
+        <div id="carrito-lista"></div>
+        <div class="carrito-footer">
+            <div class="carrito-total-row">
+                <span>Total</span>
+                <span id="carrito-total">S/ 0.00</span>
+            </div>
+            <button class="btn-pagar">Proceder al pago →</button>
+        </div>
+    </aside>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo">
+            <h1><a href="{{ url_for('inicio') }}" style="text-decoration:none;color:inherit;">Bodega July</a></h1>
+        </div>
+        <div class="buscador">
+            <input type="text" id="input-buscador" placeholder="Buscar productos">
+        </div>
+        <ul>
+            <li><a href="{{ url_for('inicio') }}"    class="{{ 'active' if active_section == 'inicio'    else '' }}">Inicio</a></li>
+            <li><a href="{{ url_for('productos') }}" class="{{ 'active' if active_section == 'productos' else '' }}">Productos</a></li>
+            <li><a href="{{ url_for('ofertas') }}"   class="{{ 'active' if active_section == 'ofertas'   else '' }}">Ofertas</a></li>
+
+            {% if nombre %}
+            <li class="cuenta-contenedor">
+                <button class="btn-cuenta">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Hola, {{ nombre }}</span>
+                    <i class="fas fa-chevron-down chevron-cuenta"></i>
+                </button>
+                <div class="cuenta-dropdown">
+                    <div class="cuenta-dropdown-header">
+                        <i class="fas fa-user-circle" style="font-size:28px;color:#a78bde"></i>
+                        <div>
+                            <strong>{{ nombre }}</strong>
+                            <span>{{ session.get('rol','cliente') }}</span>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('perfil') }}" class="cuenta-dropdown-item">
+                        <i class="fas fa-user"></i> Mi perfil
+                    </a>
+                    {% if session.get('rol') == 'admin' %}
+                    <a href="/admin" class="cuenta-dropdown-item">
+                        <i class="fas fa-cog"></i> Panel admin
+                    </a>
+                    {% endif %}
+                    <a href="/logout" class="cuenta-dropdown-item cuenta-salir">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </a>
+                </div>
+            </li>
+            {% else %}
+            <li><a href="/login" class="btn-login">Iniciar Sesión</a></li>
+            {% endif %}
+
+            <li class="carrito-contenedor">
+                <button class="btn-carrito" aria-label="Abrir carrito">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+                <span class="carrito-badge" style="display:none">0</span>
+            </li>
+        </ul>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+      <div class="footer-body">
+        <div class="footer-marca">
+          <div class="footer-logo">Bodega July</div>
+          <p>Tu minimarket de confianza en San Juan de Lurigancho. Productos frescos y de calidad, directo a tu puerta.</p>
+          <div class="footer-sociales">
+            <a href="https://wa.me/51987754712" target="_blank" class="footer-social-btn" title="Escríbenos por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><i class="fas fa-phone-alt"></i> <span>+51 987 754 712</span></li>
+            <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/51987754712" target="_blank">Escríbenos por WhatsApp</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:bodegajuly@gmail.com">bodegajuly@gmail.com</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ubicación</h4>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> <span>Av. 22 de las Flores, San Juan de Lurigancho, Lima</span></li>
+            <li><i class="fas fa-motorcycle"></i> <span>Delivery solo en SJL — 22 de las Flores y alrededores</span></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Horario</h4>
+          <ul>
+            <li><i class="fas fa-clock"></i> <span>Lunes a Sábado &mdash; 7:00 am a 10:00 pm</span></li>
+            <li><i class="fas fa-clock"></i> <span>Domingos &mdash; 8:00 am a 9:00 pm</span></li>
+          </ul>
+          <span class="horario-badge"><i class="fas fa-circle" style="font-size:7px"></i> Abierto ahora</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Bodega July &mdash; Todos los derechos reservados</span>
+        <span>Hecho con <i class="fas fa-heart" style="color:#ef4444;font-size:11px"></i> en SJL</span>
+      </div>
+    </footer>
+
+    <!-- JS base: siempre presentes en todas las páginas -->
+    <script src="{{ url_for('static', filename='js/carrito.js') }}?v=10.0"></script>
+    <script src="{{ url_for('static', filename='js/pago.js') }}?v=10.0"></script>
+    <script src="{{ url_for('static', filename='js/buscador.js') }}?v=10.0"></script>
+    <script src="{{ url_for('static', filename='js/favoritos.js') }}?v=10.0"></script>
+    {% block extra_scripts %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/main.js') }}?v=10.0"></script>
+</body>
+</html>
