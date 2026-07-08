@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "titulo": "Pollo a la brasa entero + papas + ensalada",
+    "descripcion": "El combo estrella del finde, recién salido de la parrilla.",
+    "precio_normal": 45.0,
+    "precio_oferta": 36.0,
+    "imagen": "Loader.png",
+    "dias": [
+      "viernes",
+      "sabado",
+      "domingo"
+    ],
+    "destacada": true,
+    "activa": true
+  },
+  {
+    "id": 2,
+    "titulo": "2x1 en gaseosas Coca-Cola 1.5 L",
+    "descripcion": "Lleva dos gaseosas y paga solo una. Ideal para compartir.",
+    "precio_normal": 15.0,
+    "precio_oferta": 7.5,
+    "imagen": "CocaCola.jpg",
+    "dias": [
+      "martes"
+    ],
+    "destacada": false,
+    "activa": true
+  },
+  {
+    "id": 3,
+    "titulo": "Pack Desayuno: Leche Gloria + Pan + Mermelada Fanny",
+    "descripcion": "Todo lo que necesitas para empezar el día bien.",
+    "precio_normal": 18.5,
+    "precio_oferta": 14.9,
+    "imagen": "MermeladaFanny.jpg",
+    "dias": [
+      "lunes",
+      "miercoles"
+    ],
+    "destacada": false,
+    "activa": true
+  },
+  {
+    "id": 4,
+    "titulo": "Canasta de limpieza del hogar",
+    "descripcion": "Detergente Bolívar + Lejía Clorox + Jabón Dove, a precio especial.",
+    "precio_normal": 17.5,
+    "precio_oferta": 13.9,
+    "imagen": "Detergente.png",
+    "dias": [
+      "todos"
+    ],
+    "destacada": false,
+    "activa": true
+  }
+]
