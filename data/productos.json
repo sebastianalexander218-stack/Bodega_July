@@ -1,0 +1,290 @@
+[
+  {
+    "id": 1,
+    "nombre": "Agua San Luis sin gas 625 ml",
+    "precio": 1.5,
+    "categoria": "bebidas",
+    "imagen": "AguaSanLuis.jpg",
+    "stock": 80
+  },
+  {
+    "id": 2,
+    "nombre": "Inca Kola 500 ml",
+    "precio": 3.5,
+    "categoria": "bebidas",
+    "imagen": "InkaCola.jpg",
+    "stock": 60
+  },
+  {
+    "id": 3,
+    "nombre": "Coca-Cola Original 500 ml",
+    "precio": 3.5,
+    "categoria": "bebidas",
+    "imagen": "CocaCola.jpg",
+    "stock": 55
+  },
+  {
+    "id": 4,
+    "nombre": "Pepsi 500 ml",
+    "precio": 3.0,
+    "categoria": "bebidas",
+    "imagen": "Pepsi.jpg",
+    "stock": 40
+  },
+  {
+    "id": 5,
+    "nombre": "Fanta Naranja 500 ml",
+    "precio": 3.5,
+    "categoria": "bebidas",
+    "imagen": "Fanta.jpg",
+    "stock": 35
+  },
+  {
+    "id": 6,
+    "nombre": "Frugos del Valle Naranja 1 L",
+    "precio": 5.5,
+    "categoria": "bebidas",
+    "imagen": "FrugosValle.jpg",
+    "stock": 30
+  },
+  {
+    "id": 7,
+    "nombre": "Cifrut Punch 500 ml",
+    "precio": 2.5,
+    "categoria": "bebidas",
+    "imagen": "Cifrut.jpg",
+    "stock": 45
+  },
+  {
+    "id": 8,
+    "nombre": "Leche Evaporada Gloria Azul 400 g",
+    "precio": 4.8,
+    "categoria": "lacteos",
+    "imagen": "LecheGloria.jpg",
+    "stock": 70
+  },
+  {
+    "id": 9,
+    "nombre": "Leche Evaporada Gloria Roja 400 g",
+    "precio": 5.2,
+    "categoria": "lacteos",
+    "imagen": "LecheGloriaRoja.jpg",
+    "stock": 65
+  },
+  {
+    "id": 10,
+    "nombre": "Yogurt Gloria Fresa 1 L",
+    "precio": 7.5,
+    "categoria": "lacteos",
+    "imagen": "YogurtFresa.png",
+    "stock": 25
+  },
+  {
+    "id": 11,
+    "nombre": "Yogurt Gloria Durazno 1 L",
+    "precio": 7.5,
+    "categoria": "lacteos",
+    "imagen": "YogurtDurazno.png",
+    "stock": 20
+  },
+  {
+    "id": 12,
+    "nombre": "Mantequilla Gloria 200 g",
+    "precio": 8.5,
+    "categoria": "lacteos",
+    "imagen": "MantequillaGloria.png",
+    "stock": 18
+  },
+  {
+    "id": 13,
+    "nombre": "Arroz Costeño Extra 5 kg",
+    "precio": 28.0,
+    "categoria": "alimentos",
+    "imagen": "ArrozCosteño.jpg",
+    "stock": 40
+  },
+  {
+    "id": 14,
+    "nombre": "Azúcar Rubia Cartavio 1 kg",
+    "precio": 4.5,
+    "categoria": "alimentos",
+    "imagen": "AzucarCartavio.jpg",
+    "stock": 50
+  },
+  {
+    "id": 15,
+    "nombre": "Aceite Primor Clásico 1 L",
+    "precio": 10.5,
+    "categoria": "alimentos",
+    "imagen": "AceitePrimor.jpg",
+    "stock": 35
+  },
+  {
+    "id": 16,
+    "nombre": "Fideos Don Vittorio Spaghetti 950 g",
+    "precio": 5.5,
+    "categoria": "alimentos",
+    "imagen": "FideosVittorio.jpg",
+    "stock": 45
+  },
+  {
+    "id": 17,
+    "nombre": "Fideos Don Vittorio Tallarín 950 g",
+    "precio": 5.5,
+    "categoria": "alimentos",
+    "imagen": "FideoCodo.jpg",
+    "stock": 42
+  },
+  {
+    "id": 18,
+    "nombre": "Lentejas Costeño 500 g",
+    "precio": 4.5,
+    "categoria": "alimentos",
+    "imagen": "Lentejas.jpg",
+    "stock": 30
+  },
+  {
+    "id": 19,
+    "nombre": "Frijol Canario Costeño 500 g",
+    "precio": 5.5,
+    "categoria": "alimentos",
+    "imagen": "FrijolCanario.jpg",
+    "stock": 28
+  },
+  {
+    "id": 20,
+    "nombre": "Atún Florida en Agua 140 g",
+    "precio": 6.5,
+    "categoria": "alimentos",
+    "imagen": "AtunFlorida.jpg",
+    "stock": 55
+  },
+  {
+    "id": 21,
+    "nombre": "Atún Florida en Aceite 140 g",
+    "precio": 6.5,
+    "categoria": "alimentos",
+    "imagen": "AtunAceite.jpeg",
+    "stock": 50
+  },
+  {
+    "id": 22,
+    "nombre": "Mermelada Fanny Fresa 320 g",
+    "precio": 6.5,
+    "categoria": "alimentos",
+    "imagen": "MermeladaFanny.jpg",
+    "stock": 22
+  },
+  {
+    "id": 23,
+    "nombre": "Arvejas Costeño 425 g",
+    "precio": 5.5,
+    "categoria": "alimentos",
+    "imagen": "ArvejaCosteño.jpg",
+    "stock": 20
+  },
+  {
+    "id": 24,
+    "nombre": "Galletas Soda Field",
+    "precio": 2.0,
+    "categoria": "snacks",
+    "imagen": "GalletField.jpg",
+    "stock": 60
+  },
+  {
+    "id": 25,
+    "nombre": "Galletas Charada Field",
+    "precio": 2.5,
+    "categoria": "snacks",
+    "imagen": "GalletaCharada.jpg",
+    "stock": 55
+  },
+  {
+    "id": 26,
+    "nombre": "Papas Lay's Clásicas 45 g",
+    "precio": 2.5,
+    "categoria": "snacks",
+    "imagen": "PapasLays.jpg",
+    "stock": 70
+  },
+  {
+    "id": 27,
+    "nombre": "Doritos Queso 45 g",
+    "precio": 2.5,
+    "categoria": "snacks",
+    "imagen": "Doritos.jpg",
+    "stock": 48
+  },
+  {
+    "id": 28,
+    "nombre": "Chocolate Sublime Clásico",
+    "precio": 2.0,
+    "categoria": "snacks",
+    "imagen": "Sublime.jpg",
+    "stock": 80
+  },
+  {
+    "id": 29,
+    "nombre": "Chocolate Princesa",
+    "precio": 1.5,
+    "categoria": "snacks",
+    "imagen": "Princesa.jpg",
+    "stock": 75
+  },
+  {
+    "id": 30,
+    "nombre": "Gomitas Ambrosoli Ambrosito Ácido 90g",
+    "precio": 3.0,
+    "categoria": "snacks",
+    "imagen": "Gomitas.jpg",
+    "stock": 100
+  },
+  {
+    "id": 31,
+    "nombre": "Detergente Bolívar Floral 800 g",
+    "precio": 8.5,
+    "categoria": "limpieza",
+    "imagen": "Detergente.png",
+    "stock": 30
+  },
+  {
+    "id": 32,
+    "nombre": "Lejía Clorox 819 ml",
+    "precio": 4.5,
+    "categoria": "limpieza",
+    "imagen": "Lejia.jpg",
+    "stock": 25
+  },
+  {
+    "id": 33,
+    "nombre": "Shampoo Head & Shoulders 375 ml",
+    "precio": 18.5,
+    "categoria": "limpieza",
+    "imagen": "HyS.jpg",
+    "stock": 8
+  },
+  {
+    "id": 34,
+    "nombre": "Jabón Dove Original 90 g",
+    "precio": 4.5,
+    "categoria": "limpieza",
+    "imagen": "JabonDove.jpg",
+    "stock": 40
+  },
+  {
+    "id": 35,
+    "nombre": "Pasta Dental Colgate Triple Acción",
+    "precio": 6.5,
+    "categoria": "limpieza",
+    "imagen": "Colgate.jpg",
+    "stock": 35
+  },
+  {
+    "id": 36,
+    "nombre": "Papel Higiénico Elite Hoja Doble x4",
+    "precio": 7.5,
+    "categoria": "limpieza",
+    "imagen": "PapelElite.jpg",
+    "stock": 50
+  }
+]
