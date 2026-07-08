@@ -171,8 +171,7 @@ def _ctx():
 
 @app.route("/")
 def raiz():
-    """Renderiza directamente bienvenida.html (sabemos que existe)."""
-    return render_template("bienvenida.html")  # ⚠️ CAMBIO: ahora va a bienvenida
+    return render_template("bienvenida.html")
 
 @app.route("/inicio")
 def inicio():
