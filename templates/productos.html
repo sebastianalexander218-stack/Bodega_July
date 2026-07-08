@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Productos — Bodega July{% endblock %}
+
+{% block content %}
+
+    <!-- PRODUCTOS -->
+    <section id="productos" style="padding-top: 100px;">
+        <div class="productos-header">
+            <h2>Productos Destacados</h2>
+        </div>
+
+        <!-- FILTROS POR CATEGORÍA -->
+        <div class="filtros-container">
+            <button class="filtro-btn activo" data-filtro="todos">
+                <i class="fas fa-th"></i> Todos
+            </button>
+            <button class="filtro-btn" data-filtro="bebidas">
+                <i class="fas fa-wine-bottle"></i> Bebidas
+            </button>
+            <button class="filtro-btn" data-filtro="snacks">
+                <i class="fas fa-cookie-bite"></i> Snacks
+            </button>
+            <button class="filtro-btn" data-filtro="alimentos">
+                <i class="fas fa-apple-alt"></i> Alimentos
+            </button>
+            <button class="filtro-btn" data-filtro="limpieza">
+                <i class="fas fa-spray-can"></i> Limpieza
+            </button>
+            <button class="filtro-btn" data-filtro="lacteos">
+                <i class="fas fa-cheese"></i> Lácteos
+            </button>
+        </div>
+
+        <!-- ORDENAMIENTO -->
+        <div class="orden-container">
+            <label for="selector-orden" class="orden-label">
+                <i class="fas fa-sort"></i> Ordenar por
+            </label>
+            <select id="selector-orden" class="selector-orden">
+                <option value="">Por defecto</option>
+                <option value="precio-asc">Precio: menor a mayor</option>
+                <option value="precio-desc">Precio: mayor a menor</option>
+                <option value="nombre-az">Nombre A–Z</option>
+            </select>
+        </div>
+
+        <div class="productos-container" id="productos-container">
+            <!-- Los productos se cargan dinámicamente desde la API -->
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{{ url_for('static', filename='js/filtros.js') }}?v=9.0"></script>
+    <script src="{{ url_for('static', filename='js/productos-api.js') }}?v=9.0"></script>
+{% endblock %}
