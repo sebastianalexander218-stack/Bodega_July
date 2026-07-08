@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Mi Perfil — Bodega July{% endblock %}
+
+{% block content %}
+
+<section style="padding: 120px 5% 60px; max-width: 700px; margin: 0 auto;">
+
+    <h2 style="margin-bottom: 8px;">👤 Mi Perfil</h2>
+    <p style="color: #7b7391; margin-bottom: 32px;">Hola, <strong>{{ nombre }}</strong> — {{ session.get('rol', 'cliente') }}</p>
+
+    <!-- Mensaje de éxito o error -->
+    {% if mensaje %}
+    <p style="background: #f0fdf4; border: 1px solid #86efac; color: #166534; padding: 10px 16px; border-radius: 8px; margin-bottom: 24px;">
+        {{ mensaje }}
+    </p>
+    {% endif %}
+
+    <!-- Formulario editar datos -->
+    <div style="background: white; border-radius: 16px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 32px;">
+        <h3 style="margin-bottom: 20px;">✏️ Editar datos</h3>
+        <form method="POST" action="/perfil">
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; font-size: 13px; font-weight: 600; color: #7b7391; margin-bottom: 6px;">Nombre</label>
+                <input type="text" name="nombre" value="{{ nombre }}"
+                    style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1.5px solid #ddd5f7; font-size: 14px; font-family: inherit; outline: none; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 24px;">
+                <label style="display: block; font-size: 13px; font-weight: 600; color: #7b7391; margin-bottom: 6px;">Email</label>
+                <input type="email" name="email" value="{{ email }}"
+                    style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1.5px solid #ddd5f7; font-size: 14px; font-family: inherit; outline: none; box-sizing: border-box;">
+            </div>
+            <button type="submit"
+                style="background: #a78bde; color: white; border: none; padding: 12px 28px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer;">
+                Guardar cambios
+            </button>
+        </form>
+    </div>
+
+    <!-- Favoritos -->
+    <div style="background: white; border-radius: 16px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.07);">
+        <h3 style="margin-bottom: 20px;">❤️ Mis favoritos</h3>
+        <div id="lista-favoritos">
+            <p style="color: #7b7391; font-size: 14px;">Cargando favoritos...</p>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    // Leer favoritos del localStorage y mostrarlos
+    var favoritos = JSON.parse(localStorage.getItem("favoritos") || "[]");
+    var contenedor = document.getElementById("lista-favoritos");
+
+    if (favoritos.length === 0) {
+        contenedor.innerHTML = '<p style="color:#7b7391;font-size:14px;">Aún no tienes favoritos. ¡Agrega productos desde <a href="/productos">Productos</a>!</p>';
+    } else {
+        var html = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;">';
+        favoritos.forEach(function(f) {
+            html += '<div style="border:1.5px solid #ede9fa;border-radius:12px;padding:12px;text-align:center;">' +
+                '<img src="' + f.img + '" alt="' + f.nombre + '" style="width:80px;height:80px;object-fit:contain;margin-bottom:8px;">' +
+                '<p style="font-weight:600;font-size:13px;margin:0 0 4px;">' + f.nombre + '</p>' +
+                '<p style="color:#a78bde;font-size:13px;margin:0;">' + f.precio + '</p>' +
+            '</div>';
+        });
+        html += '</div>';
+        contenedor.innerHTML = html;
+    }
+</script>
+
+{% endblock %}
