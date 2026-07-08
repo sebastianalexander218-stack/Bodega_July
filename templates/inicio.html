@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio — Bodega July{% endblock %}
+
+{% block content %}
+
+    <!-- PRELOADER: solo en inicio -->
+    <div id="preloader" style="position:fixed;inset:0;background:#e9dffc;display:flex;align-items:center;justify-content:center;z-index:9999;">
+        <div class="preloader-contenido">
+            <img src="{{ url_for('static', filename='img/Caja.png') }}" class="caja-rebotando" alt="Cargando..." style="width:200px;">
+            <div class="sombra-caja"></div>
+            <p class="texto-carga">Cargando tu hogar<span>.</span><span>.</span><span>.</span></p>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+        <button class="slider-arrow prev" aria-label="Anterior">&lsaquo;</button>
+
+        <div class="hero-contenido">
+            <span class="hero-tag">Todo lo que necesitas</span>
+            <h1>Todo para tu hogar,<br><span>en un solo lugar</span></h1>
+            <p>Compra rápido, fácil y sin salir de casa.</p>
+            <button class="btn-principal">Comprar ahora &rsaquo;</button>
+        </div>
+
+        <div class="hero-imagen">
+            <img src="{{ url_for('static', filename='img/Loader.png') }}" alt="Productos Bodega July" loading="eager">
+        </div>
+
+        <button class="slider-arrow next" aria-label="Siguiente">&rsaquo;</button>
+
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- MARCAS -->
+    <section id="marcas">
+        <h2>Marcas que confían en nosotros</h2>
+        <div class="marcas-wrapper">
+            <div class="marcas-slider" id="slider">
+                <img src="{{ url_for('static', filename='img/Coca-Cola.png') }}" alt="Coca Cola">
+                <img src="{{ url_for('static', filename='img/Gloria.png') }}" alt="Gloria">
+                <img src="{{ url_for('static', filename='img/Alicorp.png') }}" alt="Alicorp">
+                <img src="{{ url_for('static', filename='img/Laive.png') }}" alt="Laive">
+                <img src="{{ url_for('static', filename='img/Bimbo.png') }}" alt="Bimbo">
+                <img src="{{ url_for('static', filename='img/Field.png') }}" alt="Field">
+                <img src="{{ url_for('static', filename='img/Costeno.png') }}" alt="Costeño">
+                <img src="{{ url_for('static', filename='img/Elite.png') }}" alt="Elite">
+            </div>
+        </div>
+        <p class="marcas-sub">Trabajamos con las mejores marcas para ti</p>
+    </section>
+
+    <!-- MÁS VENDIDOS -->
+    <section id="mas-vendidos" style="padding:60px 5% 20px">
+        <div class="productos-header">
+            <h2>🔥 Más Vendidos</h2>
+            <a href="{{ url_for('productos') }}" class="ver-todos">Ver todos &rarr;</a>
+        </div>
+        <div class="ofertas-grid">
+            <div class="oferta-card-nueva">
+                <span class="badge-llama">🔥 Top</span>
+                <span class="badge-descuento-nuevo">-15%</span>
+                <img src="{{ url_for('static', filename='img/InkaCola.jpg') }}" alt="Inca Kola" onerror="this.src='/static/img/Loader.png'">
+                <div class="oferta-nueva-info">
+                    <h3>Inca Kola</h3>
+                    <p>500 ml</p>
+                    <div class="oferta-nueva-precios">
+                        <span class="precio-nuevo">S/ 3.50</span>
+                        <span class="precio-tachado-nuevo">S/ 4.10</span>
+                    </div>
+                </div>
+                <button class="btn-agregar-nuevo" data-nombre="Inca Kola 500 ml" data-precio="3.50" data-img="{{ url_for('static', filename='img/InkaCola.jpg') }}">
+                    Agregar al carrito
+                </button>
+            </div>
+            <div class="oferta-card-nueva">
+                <span class="badge-llama">🔥 Top</span>
+                <span class="badge-descuento-nuevo">-10%</span>
+                <img src="{{ url_for('static', filename='img/LecheGloria.jpg') }}" alt="Leche Gloria" onerror="this.src='/static/img/Loader.png'">
+                <div class="oferta-nueva-info">
+                    <h3>Leche Evaporada Gloria</h3>
+                    <p>Azul 400 g</p>
+                    <div class="oferta-nueva-precios">
+                        <span class="precio-nuevo">S/ 4.80</span>
+                        <span class="precio-tachado-nuevo">S/ 5.30</span>
+                    </div>
+                </div>
+                <button class="btn-agregar-nuevo" data-nombre="Leche Evaporada Gloria Azul 400 g" data-precio="4.80" data-img="{{ url_for('static', filename='img/LecheGloria.jpg') }}">
+                    Agregar al carrito
+                </button>
+            </div>
+            <div class="oferta-card-nueva">
+                <span class="badge-llama">Top</span>
+                <span class="badge-descuento-nuevo">-12%</span>
+                <img src="{{ url_for('static', filename='img/ArrozCosteño.jpg') }}" alt="Arroz Costeño" onerror="this.src='/static/img/Loader.png'">
+                <div class="oferta-nueva-info">
+                    <h3>Arroz Costeño Extra</h3>
+                    <p>5 kg</p>
+                    <div class="oferta-nueva-precios">
+                        <span class="precio-nuevo">S/ 28.00</span>
+                        <span class="precio-tachado-nuevo">S/ 31.80</span>
+                    </div>
+                </div>
+                <button class="btn-agregar-nuevo" data-nombre="Arroz Costeño Extra 5 kg" data-precio="28.00" data-img="{{ url_for('static', filename='img/ArrozCosteño.jpg') }}">
+                    Agregar al carrito
+                </button>
+            </div>
+            <div class="oferta-card-nueva">
+                <span class="badge-llama">Top</span>
+                <span class="badge-descuento-nuevo">-8%</span>
+                <img src="{{ url_for('static', filename='img/CocaCola.jpg') }}" alt="Coca-Cola" onerror="this.src='/static/img/Loader.png'">
+                <div class="oferta-nueva-info">
+                    <h3>Coca-Cola Original</h3>
+                    <p>500 ml</p>
+                    <div class="oferta-nueva-precios">
+                        <span class="precio-nuevo">S/ 3.50</span>
+                        <span class="precio-tachado-nuevo">S/ 3.80</span>
+                    </div>
+                </div>
+                <button class="btn-agregar-nuevo" data-nombre="Coca-Cola Original 500 ml" data-precio="3.50" data-img="{{ url_for('static', filename='img/CocaCola.jpg') }}">
+                    Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECOMENDADOS -->
+    <section id="recomendados" style="padding:20px 5% 60px">
+        <div class="productos-header">
+            <h2> Recomendados para ti</h2>
+            <a href="{{ url_for('productos') }}" class="ver-todos">Ver todos &rarr;</a>
+        </div>
+        <div class="ofertas-grid">
+            <div class="oferta-card-nueva">
+                <span class="badge-estrella">Recomendado</span>
+                <span class="badge-descuento-nuevo">-8%</span>
+                <img src="{{ url_for('static', filename='img/PapelElite.jpg') }}" alt="Papel Elite" onerror="this.src='/static/img/Loader.png'">
+                <div class="oferta-nueva-info">
+                    <h3>Papel Higiénico Elite</h3>
+                    <p>Hoja Doble x4</p>
+                    <div class="oferta-nueva-precios">
+                        <span class="precio-nuevo">S/ 7.50</span>
+                        <span class="precio-tachado-nuevo">S/ 8.15</span>
+                    </div>
+                </div>
+                <button class="btn-agregar-nuevo" data-nombre="Papel Higiénico Elite Hoja Doble x4" data-precio="7.50" data-img="{{ url_for('static', filename='img/PapelElite.jpg') }}">
+                    Agregar al carrito
+                </button>
+            </div>
+            <div class="oferta-card-nueva">
+                <span class="badge-estrella">Recomendado</span>
+                <span class="badge-descuento-nuevo">-10%</span>
+                <img src="{{ url_for('static', filename='img/Sublime.jpg') }}" alt="Chocolate Sublime" onerror="this.src='/static/img/Loader.png'">
+                <div class="oferta-nueva-info">
+                    <h3>Chocolate Sublime</h3>
+                    <p>Clásico</p>
+                    <div class="oferta-nueva-precios">
+                        <span class="precio-nuevo">S/ 2.00</span>
+                        <span class="precio-tachado-nuevo">S/ 2.20</span>
+                    </div>
+                </div>
+                <button class="btn-agregar-nuevo" data-nombre="Chocolate Sublime Clásico" data-precio="2.00" data-img="{{ url_for('static', filename='img/Sublime.jpg') }}">
+                    Agregar al carrito
+                </button>
+            </div>
+            <div class="oferta-card-nueva">
+                <span class="badge-estrella">Recomendado</span>
+                <span class="badge-descuento-nuevo">-12%</span>
+                <img src="{{ url_for('static', filename='img/AtunFlorida.jpg') }}" alt="Atún Florida" onerror="this.src='/static/img/Loader.png'">
+                <div class="oferta-nueva-info">
+                    <h3>Atún Florida</h3>
+                    <p>En agua 140 g</p>
+                    <div class="oferta-nueva-precios">
+                        <span class="precio-nuevo">S/ 6.50</span>
+                        <span class="precio-tachado-nuevo">S/ 7.40</span>
+                    </div>
+                </div>
+                <button class="btn-agregar-nuevo" data-nombre="Atún Florida en Agua 140 g" data-precio="6.50" data-img="{{ url_for('static', filename='img/AtunFlorida.jpg') }}">
+                    Agregar al carrito
+                </button>
+            </div>
+            <div class="oferta-card-nueva">
+                <span class="badge-estrella">Recomendado</span>
+                <span class="badge-descuento-nuevo">-6%</span>
+                <img src="{{ url_for('static', filename='img/GalletField.jpg') }}" alt="Galletas Soda Field" onerror="this.src='/static/img/Loader.png'">
+                <div class="oferta-nueva-info">
+                    <h3>Galletas Soda Field</h3>
+                    <p>Pack familiar</p>
+                    <div class="oferta-nueva-precios">
+                        <span class="precio-nuevo">S/ 2.00</span>
+                        <span class="precio-tachado-nuevo">S/ 2.13</span>
+                    </div>
+                </div>
+                <button class="btn-agregar-nuevo" data-nombre="Galletas Soda Field" data-precio="2.00" data-img="{{ url_for('static', filename='img/GalletField.jpg') }}">
+                    Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORÍAS -->
+    <section id="categorias">
+        <h2>Categorías</h2>
+        <div class="categorias-container">
+            <a href="{{ url_for('productos') }}?categoria=alimentos" class="categoria-card" title="Ver alimentos">
+                <span class="cat-icon"><i class="fas fa-apple-alt"></i></span>
+                <div class="cat-info">
+                    <h3>Alimentos</h3>
+                    <span>Ver más &rsaquo;</span>
+                </div>
+            </a>
+            <a href="{{ url_for('productos') }}?categoria=limpieza" class="categoria-card" title="Ver limpieza">
+                <span class="cat-icon"><i class="fas fa-spray-can"></i></span>
+                <div class="cat-info">
+                    <h3>Limpieza</h3>
+                    <span>Ver más &rsaquo;</span>
+                </div>
+            </a>
+            <a href="{{ url_for('productos') }}?categoria=bebidas" class="categoria-card" title="Ver bebidas">
+                <span class="cat-icon"><i class="fas fa-wine-bottle"></i></span>
+                <div class="cat-info">
+                    <h3>Bebidas</h3>
+                    <span>Ver más &rsaquo;</span>
+                </div>
+            </a>
+            <a href="{{ url_for('productos') }}?categoria=lacteos" class="categoria-card" title="Ver lácteos">
+                <span class="cat-icon"><i class="fas fa-cheese"></i></span>
+                <div class="cat-info">
+                    <h3>Lácteos</h3>
+                    <span>Ver más &rsaquo;</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{{ url_for('static', filename='js/preloader.js') }}?v=10.0"></script>
+    <script src="{{ url_for('static', filename='js/slider.js') }}?v=10.0"></script>
+    <script src="{{ url_for('static', filename='js/marcas.js') }}?v=10.0"></script>
+    <script src="{{ url_for('static', filename='js/ofertas.js') }}?v=10.0"></script>
+{% endblock %}
